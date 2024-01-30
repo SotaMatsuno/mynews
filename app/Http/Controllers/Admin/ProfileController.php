@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// 以下の1行を追記することで、News Modelが扱えるようになる
+use App\Models\Profile;
+
 class ProfileController extends Controller
 {
     //
@@ -15,6 +18,17 @@ class ProfileController extends Controller
 
     public function create()
     {
+        // 以下を追記  14章課題
+        // Validationを行う
+        $this->validate($request, News::$rules);
+
+        $news = new News;
+        $form = $request->all();
+        
+        // データベースに保存する
+        $news->fill($form);
+        $news->save();
+        
         return redirect('admin/profile/create');
     }
 
