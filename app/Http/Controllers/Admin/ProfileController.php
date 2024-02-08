@@ -20,14 +20,14 @@ class ProfileController extends Controller
     {
         // 以下を追記  14章課題
         // Validationを行う
-        $this->validate($request, News::$rules);
+        $this->validate($request, Profiles::$rules);
 
-        $news = new News;
+        $profile = new Profiles;
         $form = $request->all();
         
         // データベースに保存する
-        $news->fill($form);
-        $news->save();
+        $profile->fill($form);
+        $profile->save();
         
         return redirect('admin/profile/create');
     }
