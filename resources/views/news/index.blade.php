@@ -1,5 +1,7 @@
 @extends('layouts.front')
 
+@section('title', 'Myニュース')
+
 @section('content')
     <div class="container">
         <hr color="#c0c0c0">
